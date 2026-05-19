@@ -72,6 +72,31 @@ No prices shown. Users select product type (Fine Art Print, Mug/Cup, T-Shirt, Ta
 - Git push requires a Personal Access Token (not account password) — generate at github.com → Settings → Developer settings → Personal access tokens → Tokens (classic) → repo scope
 - Git was installed but needs a fresh terminal session to be recognised in PATH
 
+## Session Updates (May 19 2026)
+
+### GitHub Deployment
+- Repo initialized and pushed to https://github.com/ryanmicart/ryanmichaelgallery
+- GitHub Pages enabled — deploys from main branch / root
+- Git user set to ryanmicart (noreply email)
+
+### Under Development Banner
+- Added dark banner at top of index.html: "🚧 This website is currently under development. Some features may be incomplete."
+
+### Enquiry Forms → info@ryanmichael.com.au
+- Using Formspree: https://formspree.io/f/mkoegqqq
+- Contact form (index.html): action set to Formspree endpoint
+- Quote request form (artwork.html / detail.js): async fetch POST to Formspree with artwork, product, size, name, email, phone, message fields
+- Fallback message directs users to email directly if submission fails
+- Note: Formspree email must be verified to receive submissions
+
+### Custom Domain
+- Domain: ryanmichael.com.au (hosted via Crazy Domains, email via Titan)
+- DNS A records added in Crazy Domains pointing to GitHub Pages IPs:
+  185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+- CNAME record: www → ryanmicart.github.io
+- Custom domain set in GitHub repo Settings → Pages → ryanmichael.com.au
+- Status: DNS pending propagation (up to 24hrs), HTTPS will auto-provision after
+
 ## Notes
 - Instagram sharing not implemented (Instagram API doesn't support posting from static sites; discussed alternatives)
 - Screenshot prevention is best-effort (watermark is the real protection since OS-level screenshots can't be blocked)
