@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   productType.addEventListener("change", updateSizes);
   updateSizes();
 
-  document.getElementById("btn-request-quote").addEventListener("click", () => {
+  document.getElementById("btn-request-quote").addEventListener("click", async () => {
     const name = document.getElementById("quote-name").value.trim();
     const emailCb = document.getElementById("contact-email").checked;
     const phoneCb = document.getElementById("contact-phone").checked;
@@ -108,7 +108,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (phoneCb && !phone) { alert("Please enter your phone number."); return; }
     const product = productType.options[productType.selectedIndex].text;
     const size = productSize.options[productSize.selectedIndex].text;
-    alert(`Quote requested for: ${title} — ${product} (${size})\nWe'll contact you soon. Thank you, ${name}!`);
+    const message = document.getElementById("quote-message").value.trim();
+    const res = await fetch("https://formspree.io/f/mkoegqqq", {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, artwork: title, product, size, message })
+    });
+    if (res.ok) {
+      alert(`Quote requested for: ${title} — ${product} (${size})\nWe'll be in touch soon. Thank you, ${name}!`);
+    } else {
+      alert("Something went wrong. Please try again or email info@ryanmichael.com.au directly.");
+    }
   });
 
   // Toggle contact fields
