@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Michael — Artwork</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Ryan Michael</a>
+            <nav>
+                <a href="index.html#catalogue">Catalogue</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#media">Media & Events</a>
+                <a href="shipping.html">Shipping</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="detail-page">
+        <a href="index.html#catalogue" class="back-link">&larr; Back to Catalogue</a>
+        <h2 id="detail-title">Artwork Title</h2>
+        <p class="detail-meta" id="detail-meta">2024 — Abstract — Emotion</p>
+        <div class="detail-specs" id="detail-specs">
+            <span><strong>Medium:</strong> <span id="spec-medium">Acrylic on canvas</span></span>
+            <span><strong>Dimensions:</strong> <span id="spec-dimensions">60 × 80 cm</span></span>
+            <span><strong>Edition:</strong> <span id="spec-edition">Limited edition of 25</span></span>
+            <span class="spec-available"><strong>Status:</strong> Available</span>
+        </div>
+
+        <div class="view-tabs">
+            <button class="view-tab active" data-view="artwork">Artwork</button>
+            <button class="view-tab" data-view="gallery">In Gallery</button>
+            <button class="view-tab" data-view="living-room">In Living Room</button>
+            <button class="view-tab" data-view="wall-preview">Wall Preview</button>
+        </div>
+
+        <div class="detail-viewer">
+            <div class="view-panel active" id="view-artwork">
+                <div class="zoom-container" id="zoom-container">
+                    <img id="detail-img" src="" alt="Artwork">
+                </div>
+                <p class="zoom-hint">Hover to zoom · Click to toggle full zoom</p>
+            </div>
+            <div class="view-panel" id="view-gallery">
+                <div class="mockup-scene gallery-scene">
+                    <div class="mockup-wall">
+                        <div class="mockup-frame"><img id="gallery-img" src="" alt="In gallery"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-panel" id="view-living-room">
+                <div class="mockup-scene living-room-scene">
+                    <div class="mockup-wall">
+                        <div class="mockup-frame"><img id="room-img" src="" alt="In living room"></div>
+                    </div>
+                    <div class="mockup-couch"></div>
+                </div>
+            </div>
+            <div class="view-panel" id="view-wall-preview">
+                <div class="wall-tool">
+                    <p class="wall-tool-intro">Enter your wall dimensions to see how this artwork fits.</p>
+                    <div class="wall-inputs">
+                        <label>Wall width (cm): <input type="number" id="wall-width" value="300" min="50" max="1000"></label>
+                        <label>Wall height (cm): <input type="number" id="wall-height" value="250" min="50" max="500"></label>
+                    </div>
+                    <div class="wall-canvas" id="wall-canvas">
+                        <div class="wall-surface" id="wall-surface">
+                            <div class="wall-artwork" id="wall-artwork">
+                                <img id="wall-img" src="" alt="Artwork on wall">
+                            </div>
+                            <p class="wall-dimensions-label" id="wall-label">60 × 80 cm artwork on 300 × 250 cm wall</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PURCHASE OPTIONS -->
+    <section class="purchase-options">
+        <h3>Purchase This Artwork</h3>
+        <div class="option-group">
+            <label for="product-type">Product</label>
+            <select id="product-type">
+                <option value="print">Fine Art Print</option>
+                <option value="cup">Mug / Cup</option>
+                <option value="tshirt">T-Shirt</option>
+                <option value="tablet-skin">Tablet Skin</option>
+            </select>
+        </div>
+        <div class="option-group" id="size-group">
+            <label for="product-size">Size</label>
+            <select id="product-size"></select>
+        </div>
+        <div class="option-group">
+            <label for="quote-name">Name</label>
+            <input type="text" id="quote-name" placeholder="Your name" required>
+        </div>
+        <div class="option-group">
+            <label>Preferred Contact Method</label>
+            <div class="contact-methods">
+                <label><input type="checkbox" id="contact-email" checked> Email</label>
+                <label><input type="checkbox" id="contact-phone"> Phone</label>
+            </div>
+        </div>
+        <div class="option-group" id="email-group">
+            <label for="quote-email">Email</label>
+            <input type="email" id="quote-email" placeholder="you@example.com">
+        </div>
+        <div class="option-group" id="phone-group" style="display:none;">
+            <label for="quote-phone">Phone</label>
+            <input type="tel" id="quote-phone" placeholder="+1 234 567 8900">
+        </div>
+        <div class="option-group">
+            <label for="quote-message">Message (optional)</label>
+            <textarea id="quote-message" rows="3" placeholder="Any details or questions..."></textarea>
+        </div>
+        <button class="btn-add-cart" id="btn-request-quote">Request Quote</button>
+    </section>
+
+    <!-- RELATED WORKS -->
+    <section class="related-works">
+        <h2>You May Also Like</h2>
+        <div class="related-grid" id="related-grid">
+            <div class="related-card" data-seed="rm2" data-title="Golden Valley" data-year="2024" data-theme="landscape" data-topic="nature">
+                <img src="https://picsum.photos/seed/rm2/400/500" alt="Golden Valley">
+                <p>Golden Valley</p>
+            </div>
+            <div class="related-card" data-seed="rm5" data-title="Fractured Light" data-year="2022" data-theme="abstract" data-topic="light">
+                <img src="https://picsum.photos/seed/rm5/400/500" alt="Fractured Light">
+                <p>Fractured Light</p>
+            </div>
+            <div class="related-card" data-seed="rm8" data-title="Kinetic Flow" data-year="2021" data-theme="abstract" data-topic="movement">
+                <img src="https://picsum.photos/seed/rm8/400/500" alt="Kinetic Flow">
+                <p>Kinetic Flow</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-social">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Pinterest</a>
+        </div>
+        <p>&copy; 2026 Ryan Michael. All rights reserved.</p>
+    </footer>
+
+    <script src="detail.js"></script>
+</body>
+</html>
