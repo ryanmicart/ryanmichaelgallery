@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.6; background: #fff; }
+body { font-family: 'Ubuntu', "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.6; background: #fff; }
 
 /* HEADER */
 header { border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; background: #fff; z-index: 50; }
 .header-inner { max-width: 1200px; margin: 0 auto; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 600; text-decoration: none; color: #1a1a1a; letter-spacing: 3px; text-transform: uppercase; }
+.logo { font-family: 'Ubuntu', sans-serif; font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; text-decoration: none; color: #1a1a1a; letter-spacing: 3px; text-transform: uppercase; }
 nav a { color: #555; text-decoration: none; margin-left: 1.4rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
 nav a:hover { color: #000; }
 
 /* SECTIONS */
 section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px; }
+h2 { font-family: 'Ubuntu', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1px; }
 
 /* CATALOGUE */
 .filters { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; align-items: center; }
@@ -177,7 +177,7 @@ footer { text-align: center; padding: 2rem; border-top: 1px solid #e0e0e0; color
 #hero { max-width: 100%; padding: 0; position: relative; }
 #hero img { width: 100%; height: clamp(280px, 50vw, 600px); object-fit: cover; display: block; }
 .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.35); color: #fff; text-align: center; }
-.hero-overlay h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: clamp(2px, 0.5vw, 5px); text-transform: uppercase; margin-bottom: 0.5rem; }
+.hero-overlay h2 { font-family: 'Ubuntu', sans-serif; font-size: clamp(1.6rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: clamp(2px, 0.5vw, 5px); text-transform: uppercase; margin-bottom: 0.5rem; }
 .hero-overlay p { font-size: clamp(0.9rem, 1.5vw, 1.1rem); margin-bottom: 1.5rem; opacity: 0.9; }
 .hero-cta { padding: 0.8rem 2rem; border: 1px solid #fff; color: #fff; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
 .hero-cta:hover { background: #fff; color: #1a1a1a; }
