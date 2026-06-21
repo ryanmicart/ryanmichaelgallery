@@ -12,25 +12,34 @@
         <div class="header-inner">
             <a href="#" class="logo">Ryan Michael</a>
             <nav>
-                <a href="#catalogue">Catalogue</a>
+                <a href="#catalogue">Gallery</a>
                 <a href="#inequality-exhibition">Inequality 2026</a>
-                <a href="#about">About</a>
-                <a href="#media">Media & Events</a>
-                <a href="shipping.html">Shipping</a>
-                <a href="faq.html">FAQ</a>
                 <a href="#contact">Contact</a>
-                <button id="cart-toggle" class="cart-btn" aria-label="View cart">&#128722; <span id="cart-count">0</span></button>
             </nav>
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO: full-viewport, single CTA -->
     <section id="hero">
         <img src="Freedom.JPG" alt="Featured artwork">
         <div class="hero-overlay">
             <h2>Ryan Michael</h2>
-            <p>Original paintings & limited edition prints</p>
-            <a href="#catalogue" class="hero-cta">View Collection</a>
+            <p>Original photography &amp; fine art prints</p>
+            <a href="#catalogue" class="hero-cta">View Works</a>
+        </div>
+    </section>
+
+    <!-- INLINE BIO (below hero) -->
+    <section id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://picsum.photos/seed/ryanm/400/500" alt="Ryan Michael">
+            </div>
+            <div class="about-text">
+                <h2>Ryan Michael</h2>
+                <p>Ryan Michael is a self-taught artist whose work explores the intersection of emotion and colour. Growing up surrounded by nature, Ryan developed a deep appreciation for light, texture, and movement — elements that now define his signature style.</p>
+                <p>Each piece is a reflection of lived experience, capturing fleeting moments and transforming them into lasting visual narratives. Ryan's work has been exhibited in galleries across the country and lives in private collections worldwide.</p>
+            </div>
         </div>
     </section>
 
@@ -40,292 +49,134 @@
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Search works..." aria-label="Search artworks">
         </div>
+        <!-- Filter chips -->
         <div class="filters">
-            <select id="filter-year" aria-label="Filter by year">
-                <option value="">Year</option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-            </select>
-            <select id="filter-theme" aria-label="Filter by theme">
-                <option value="">Theme</option>
-                <option value="abstract">Abstract</option>
-                <option value="landscape">Landscape</option>
-                <option value="portrait">Portrait</option>
-                <option value="urban">Urban</option>
-            </select>
-            <select id="filter-topic" aria-label="Filter by topic">
-                <option value="">Topic</option>
-                <option value="nature">Nature</option>
-                <option value="emotion">Emotion</option>
-                <option value="movement">Movement</option>
-                <option value="light">Light</option>
-            </select>
-            <button id="clear-filters">Clear</button>
+            <div class="filter-group">
+                <button class="chip active" data-filter="year" data-value="">All Years</button>
+                <button class="chip" data-filter="year" data-value="2024">2024</button>
+                <button class="chip" data-filter="year" data-value="2023">2023</button>
+                <button class="chip" data-filter="year" data-value="2022">2022</button>
+                <button class="chip" data-filter="year" data-value="2021">2021</button>
+                <button class="chip" data-filter="year" data-value="2020">2020</button>
+            </div>
+            <div class="filter-group">
+                <button class="chip active" data-filter="theme" data-value="">All Themes</button>
+                <button class="chip" data-filter="theme" data-value="abstract">Abstract</button>
+                <button class="chip" data-filter="theme" data-value="landscape">Landscape</button>
+                <button class="chip" data-filter="theme" data-value="portrait">Portrait</button>
+                <button class="chip" data-filter="theme" data-value="urban">Urban</button>
+            </div>
         </div>
         <div class="catalogue-grid" id="catalogue-grid">
             <div class="work-card" data-year="2024" data-theme="abstract" data-topic="emotion">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm1/400/500" alt="Abstract Harmony">
-                    <button class="wishlist-btn" data-title="Abstract Harmony" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Abstract Harmony</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="1200">A2 Limited Edition (3/25) — $1,200</option>
-                        <option value="2500">Original — $2,500</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Abstract Harmony">Add to Cart</button>
+                    <p class="work-meta">Photography · 60 × 80 cm</p>
                 </div>
             </div>
             <div class="work-card" data-year="2024" data-theme="landscape" data-topic="nature">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm2/400/500" alt="Golden Valley">
-                    <button class="wishlist-btn" data-title="Golden Valley" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Golden Valley</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="3200">Original — $3,200</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Golden Valley">Add to Cart</button>
+                    <p class="work-meta">Photography · 80 × 100 cm</p>
                 </div>
             </div>
             <div class="work-card sold" data-year="2023" data-theme="portrait" data-topic="emotion">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm3/400/500" alt="Silent Gaze">
                     <span class="sold-badge">Original Sold</span>
-                    <button class="wishlist-btn" data-title="Silent Gaze" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire Print</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Silent Gaze</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="" disabled>A2 Limited Edition (Sold Out)</option>
-                        <option value="" disabled>Original — Sold</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Silent Gaze">Add to Cart</button>
+                    <p class="work-meta">Photography · 50 × 70 cm</p>
                 </div>
             </div>
             <div class="work-card" data-year="2023" data-theme="urban" data-topic="movement">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm4/400/500" alt="Urban Pulse">
-                    <button class="wishlist-btn" data-title="Urban Pulse" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Urban Pulse</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="2400">Original — $2,400</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Urban Pulse">Add to Cart</button>
+                    <p class="work-meta">Photography · 60 × 90 cm</p>
                 </div>
             </div>
             <div class="work-card" data-year="2022" data-theme="abstract" data-topic="light">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm5/400/500" alt="Fractured Light">
-                    <button class="wishlist-btn" data-title="Fractured Light" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Fractured Light</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="2200">Original — $2,200</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Fractured Light">Add to Cart</button>
+                    <p class="work-meta">Photography · 70 × 90 cm</p>
                 </div>
             </div>
             <div class="work-card sold" data-year="2022" data-theme="landscape" data-topic="nature">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm6/400/500" alt="Ocean Drift">
                     <span class="sold-badge">Original Sold</span>
-                    <button class="wishlist-btn" data-title="Ocean Drift" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire Print</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Ocean Drift</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="1200">A2 Limited Edition (8/25) — $1,200</option>
-                        <option value="" disabled>Original — Sold</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Ocean Drift">Add to Cart</button>
+                    <p class="work-meta">Photography · 60 × 80 cm</p>
                 </div>
             </div>
             <div class="work-card" data-year="2021" data-theme="portrait" data-topic="emotion">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm7/400/500" alt="Quiet Strength">
-                    <button class="wishlist-btn" data-title="Quiet Strength" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Quiet Strength</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="2900">Original — $2,900</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Quiet Strength">Add to Cart</button>
+                    <p class="work-meta">Photography · 50 × 60 cm</p>
                 </div>
             </div>
             <div class="work-card" data-year="2021" data-theme="abstract" data-topic="movement">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm8/400/500" alt="Kinetic Flow">
-                    <button class="wishlist-btn" data-title="Kinetic Flow" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Kinetic Flow</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="2100">Original — $2,100</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Kinetic Flow">Add to Cart</button>
+                    <p class="work-meta">Photography · 80 × 80 cm</p>
                 </div>
             </div>
             <div class="work-card" data-year="2020" data-theme="landscape" data-topic="light">
                 <div class="card-image">
                     <img src="https://picsum.photos/seed/rm9/400/500" alt="Morning Haze">
-                    <button class="wishlist-btn" data-title="Morning Haze" aria-label="Save to wishlist">&#9825;</button>
+                    <div class="card-enquire-overlay">
+                        <a href="#contact" class="enquire-btn">Enquire</a>
+                    </div>
                 </div>
                 <div class="work-info">
                     <p class="work-title">Morning Haze</p>
-                    <select class="size-select" aria-label="Size and price">
-                        <option value="350">A4 Print — $350</option>
-                        <option value="550">A3 Print — $550</option>
-                        <option value="900">A2 Print — $900</option>
-                        <option value="2700">Original — $2,700</option>
-                    </select>
-                    <button class="add-cart-btn" data-title="Morning Haze">Add to Cart</button>
+                    <p class="work-meta">Photography · 60 × 75 cm</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="about-content">
-            <div class="about-image">
-                <img src="https://picsum.photos/seed/ryanm/400/500" alt="Ryan Michael">
-            </div>
-            <div class="about-text">
-                <h2>Ryan Michael</h2>
-                <p>Ryan Michael is a self-taught artist whose work explores the intersection of emotion and color. Growing up surrounded by nature, Ryan developed a deep appreciation for light, texture, and movement — elements that now define his signature style.</p>
-                <p>Each piece is a reflection of lived experience, capturing fleeting moments and transforming them into lasting visual narratives. Ryan's work has been exhibited in galleries across the country and lives in private collections worldwide.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- MEDIA & EVENTS -->
-    <section id="media">
-        <h2>Media & Events</h2>
-        <div class="media-grid">
-            <div class="media-block">
-                <h3>Upcoming Events</h3>
-                <div class="event-item">
-                    <span class="event-date">Jun 15, 2026</span>
-                    <strong>Solo Exhibition — "Layers of Light"</strong>
-                    <p>Gallery One, New York City</p>
-                </div>
-                <div class="event-item">
-                    <span class="event-date">Jul 22, 2026</span>
-                    <strong>Art Fair Showcase</strong>
-                    <p>Contemporary Arts Center, Los Angeles</p>
-                </div>
-                <div class="event-item">
-                    <span class="event-date">Sep 5, 2026</span>
-                    <strong>Live Painting & Meet the Artist</strong>
-                    <p>The Creative Space, Chicago</p>
-                </div>
-            </div>
-            <div class="media-block">
-                <h3>Press & Media</h3>
-                <div class="press-item">
-                    <a href="#">"Ryan Michael: Colour as Language" — ArtReview, 2025</a>
-                </div>
-                <div class="press-item">
-                    <a href="#">Interview: The Process Behind the Paint — Studio Magazine</a>
-                </div>
-                <div class="press-item">
-                    <a href="#">Featured Artist — Contemporary Painters Quarterly</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section id="video">
-        <h2>Studio & Process</h2>
-        <div class="video-grid">
-            <div class="video-card">
-                <div class="video-placeholder" data-video="studio-tour">
-                    <img src="https://picsum.photos/seed/vid1/600/340" alt="Studio Tour">
-                    <span class="play-btn">&#9654;</span>
-                </div>
-                <p class="video-title">Studio Tour</p>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" data-video="process">
-                    <img src="https://picsum.photos/seed/vid2/600/340" alt="Painting Process">
-                    <span class="play-btn">&#9654;</span>
-                </div>
-                <p class="video-title">Painting Process — "Fractured Light"</p>
-            </div>
-            <div class="video-card">
-                <div class="video-placeholder" data-video="exhibition">
-                    <img src="https://picsum.photos/seed/vid3/600/340" alt="Exhibition Walkthrough">
-                    <span class="play-btn">&#9654;</span>
-                </div>
-                <p class="video-title">Exhibition Walkthrough — 2025</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXHIBITION HISTORY / CV -->
-    <section id="cv">
-        <h2>Exhibition History</h2>
-        <div class="cv-grid">
-            <div class="cv-block">
-                <h3>Solo Exhibitions</h3>
-                <ul class="cv-list">
-                    <li><span class="cv-year">2026</span> "Layers of Light" — Gallery One, New York City</li>
-                    <li><span class="cv-year">2025</span> "Colour as Language" — Whitespace Gallery, Melbourne</li>
-                    <li><span class="cv-year">2024</span> "Between Stillness and Motion" — Arc Gallery, London</li>
-                    <li><span class="cv-year">2023</span> "First Light" — Studio 44, Sydney</li>
-                </ul>
-            </div>
-            <div class="cv-block">
-                <h3>Group Exhibitions</h3>
-                <ul class="cv-list">
-                    <li><span class="cv-year">2025</span> Contemporary Painters Annual — National Art Center</li>
-                    <li><span class="cv-year">2024</span> Emerging Voices — Saatchi Gallery, London</li>
-                    <li><span class="cv-year">2024</span> Art Fair Melbourne — Royal Exhibition Building</li>
-                    <li><span class="cv-year">2023</span> New Perspectives — MOCA, Los Angeles</li>
-                </ul>
-            </div>
-            <div class="cv-block">
-                <h3>Awards & Recognition</h3>
-                <ul class="cv-list">
-                    <li><span class="cv-year">2025</span> Finalist — Archibald Prize</li>
-                    <li><span class="cv-year">2024</span> Winner — Emerging Artist Award, ArtReview</li>
-                    <li><span class="cv-year">2023</span> Selected — 30 Under 30 Artists to Watch</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -368,42 +219,91 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-        <h2>What Collectors Say</h2>
-        <div class="testimonials-grid">
-            <blockquote>
-                <p>"The depth of colour in Ryan's work is extraordinary. It transforms the room."</p>
-                <cite>— Sarah L., Private Collector</cite>
-            </blockquote>
-            <blockquote>
-                <p>"I've purchased three pieces now. Each one feels like it was made for the space."</p>
-                <cite>— James T., Melbourne</cite>
-            </blockquote>
-            <blockquote>
-                <p>"Professional from start to finish. The painting arrived beautifully packaged."</p>
-                <cite>— Mika R., London</cite>
-            </blockquote>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
+    <!-- CONTACT (with merged FAQ + Shipping) -->
     <section id="contact">
-        <h2>Get in Touch</h2>
-        <p class="contact-intro">Commissions, gallery enquiries, or just to say hello.</p>
+        <h2>Contact</h2>
+        <p class="contact-intro">Commissions, purchase enquiries, or just to say hello.</p>
         <form id="contact-form" action="https://formspree.io/f/mkoegqqq" method="POST">
             <input type="text" name="name" placeholder="Your name" required>
             <input type="email" name="email" placeholder="Your email" required>
             <select name="subject">
                 <option value="">Subject</option>
                 <option value="commission">Commission Enquiry</option>
-                <option value="purchase">Purchase Question</option>
+                <option value="purchase">Purchase / Print Enquiry</option>
                 <option value="gallery">Gallery Representation</option>
                 <option value="other">Other</option>
             </select>
             <textarea name="message" rows="5" placeholder="Your message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
+
+        <!-- SHIPPING & RETURNS -->
+        <div class="info-block">
+            <h3 class="info-heading">Shipping &amp; Returns</h3>
+
+            <details class="faq-item">
+                <summary>Shipping rates</summary>
+                <table class="shipping-table">
+                    <thead><tr><th>Item</th><th>Domestic</th><th>International</th></tr></thead>
+                    <tbody>
+                        <tr><td>A4 Print</td><td>$15</td><td>$30</td></tr>
+                        <tr><td>A3 Print</td><td>$20</td><td>$40</td></tr>
+                        <tr><td>A2 Print</td><td>$30</td><td>$55</td></tr>
+                        <tr><td>Original</td><td>$50–100</td><td>Quote on request</td></tr>
+                    </tbody>
+                </table>
+            </details>
+
+            <details class="faq-item">
+                <summary>Processing time</summary>
+                <p>Prints are dispatched within 3–5 business days. Originals are shipped within 7–10 business days.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Returns</summary>
+                <p>Returns accepted within 14 days of delivery. Items must be undamaged and in original packaging. Return shipping is the buyer's responsibility unless the item arrived damaged.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Damaged items</summary>
+                <p>Contact us within 48 hours with photos. We will arrange a replacement or full refund including shipping.</p>
+            </details>
+        </div>
+
+        <!-- FAQ -->
+        <div class="info-block">
+            <h3 class="info-heading">FAQ</h3>
+
+            <details class="faq-item">
+                <summary>Do you accept commissions?</summary>
+                <p>Yes. Use the form above to describe what you're looking for — size, subject, colour palette — and I'll provide a quote and timeline.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>What are the prints printed on?</summary>
+                <p>310gsm Hahnemühle fine art paper using archival pigment inks. Each print is signed, numbered, and comes with a certificate of authenticity.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do I receive a certificate of authenticity?</summary>
+                <p>Yes. Every original and limited edition print comes with a signed certificate confirming title, medium, dimensions, edition number, and date.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Standard prints vs. limited editions?</summary>
+                <p><strong>Standard prints</strong> are always available in A4, A3, and A2 on archival paper. <strong>Limited editions</strong> are restricted to 25 per image — signed, numbered, with certificate. Once sold out, no more are produced.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Can I see a work in person before buying?</summary>
+                <p>Studio visits by appointment if you're local. Otherwise I'm happy to provide additional photos or arrange a video call.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>What payment methods do you accept?</summary>
+                <p>Credit/debit cards via Stripe. For originals, bank transfer and payment plans are also available — just ask.</p>
+            </details>
+        </div>
     </section>
 
     <footer>
@@ -413,26 +313,12 @@
             <a href="#" aria-label="Pinterest">Pinterest</a>
         </div>
         <div class="footer-links">
-            <a href="shipping.html">Shipping & Returns</a>
-            <a href="faq.html">FAQ</a>
+            <a href="#contact">Shipping &amp; Returns</a>
+            <a href="#contact">FAQ</a>
             <a href="#contact">Contact</a>
         </div>
         <p>&copy; 2026 Ryan Michael. All rights reserved.</p>
     </footer>
-
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="cart-sidebar" hidden>
-        <div class="cart-header">
-            <h3>Your Cart</h3>
-            <button id="cart-close" aria-label="Close cart">&times;</button>
-        </div>
-        <div id="cart-items" class="cart-items"></div>
-        <div class="cart-footer">
-            <p class="cart-total">Total: $<span id="cart-total">0</span></p>
-            <button id="cart-checkout" class="checkout-btn">Checkout</button>
-        </div>
-    </div>
-    <div id="cart-overlay" class="cart-overlay" hidden></div>
 
     <!-- Newsletter Popup -->
     <div id="newsletter-overlay" class="cart-overlay" hidden></div>

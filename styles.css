@@ -15,19 +15,28 @@ section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
 h2 { font-family: 'Ubuntu', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1px; }
 
 /* CATALOGUE */
-.filters { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; align-items: center; }
-.filters select { padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 0; background: #fff; font-size: 0.9rem; color: #333; cursor: pointer; appearance: auto; }
-#clear-filters { padding: 0.5rem 1rem; border: 1px solid #ccc; background: #fff; font-size: 0.9rem; cursor: pointer; }
-#clear-filters:hover { background: #f5f5f5; }
+.filters { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+.filter-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip { padding: 0.4rem 1rem; border: 1px solid #ccc; border-radius: 20px; background: #fff; font-size: 0.82rem; color: #555; cursor: pointer; letter-spacing: 0.3px; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.chip:hover { border-color: #1a1a1a; color: #1a1a1a; }
+.chip.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
 .catalogue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
 .work-card { cursor: pointer; }
 .work-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
-.work-card .work-title { margin-top: 0.5rem; font-size: 0.85rem; color: #555; }
 .work-card.hidden { display: none; }
-.work-info { padding: 0.8rem 0; }
-.work-info .size-select { width: 100%; padding: 0.4rem; border: 1px solid #ddd; font-size: 0.8rem; margin: 0.5rem 0; }
-.work-info .add-cart-btn { width: 100%; padding: 0.5rem; background: #1a1a1a; color: #fff; border: none; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; }
-.work-info .add-cart-btn:hover { background: #333; }
+.work-info { padding: 0.75rem 0 0.5rem; }
+.work-title { font-size: 0.9rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.2rem; }
+.work-meta { font-size: 0.8rem; color: #888; }
+
+/* ENQUIRE OVERLAY */
+.card-enquire-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+.card-image:hover .card-enquire-overlay { opacity: 1; }
+.enquire-btn { padding: 0.6rem 1.6rem; border: 1px solid #fff; color: #fff; text-decoration: none; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1.5px; background: transparent; transition: background 0.15s, color 0.15s; }
+.enquire-btn:hover { background: #fff; color: #1a1a1a; }
+
+/* INFO BLOCKS (Shipping + FAQ in Contact) */
+.info-block { margin-top: 3rem; max-width: 600px; }
+.info-heading { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 1rem; }
 
 /* ABOUT */
 .about-content { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
@@ -174,12 +183,12 @@ footer { text-align: center; padding: 2rem; border-top: 1px solid #e0e0e0; color
 
 
 /* HERO */
-#hero { max-width: 100%; padding: 0; position: relative; }
-#hero img { width: 100%; height: clamp(280px, 50vw, 600px); object-fit: cover; display: block; }
-.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.35); color: #fff; text-align: center; }
-.hero-overlay h2 { font-family: 'Ubuntu', sans-serif; font-size: clamp(1.6rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: clamp(2px, 0.5vw, 5px); text-transform: uppercase; margin-bottom: 0.5rem; }
-.hero-overlay p { font-size: clamp(0.9rem, 1.5vw, 1.1rem); margin-bottom: 1.5rem; opacity: 0.9; }
-.hero-cta { padding: 0.8rem 2rem; border: 1px solid #fff; color: #fff; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+#hero { max-width: 100%; padding: 0; position: relative; height: 100vh; min-height: 500px; }
+#hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.38); color: #fff; text-align: center; }
+.hero-overlay h2 { font-family: 'Ubuntu', sans-serif; font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: clamp(4px, 1vw, 10px); text-transform: uppercase; margin-bottom: 0.6rem; }
+.hero-overlay p { font-size: clamp(0.9rem, 1.5vw, 1.15rem); margin-bottom: 2rem; opacity: 0.85; letter-spacing: 1px; }
+.hero-cta { padding: 0.9rem 2.5rem; border: 1px solid #fff; color: #fff; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; transition: background 0.2s, color 0.2s; }
 .hero-cta:hover { background: #fff; color: #1a1a1a; }
 
 /* SEARCH */

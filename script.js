@@ -1,32 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Catalogue filtering
-  const filters = document.querySelectorAll("#filter-year, #filter-theme, #filter-topic");
+  // Catalogue filtering — chip buttons
   const cards = document.querySelectorAll(".work-card");
-  const clearBtn = document.getElementById("clear-filters");
+  const activeFilters = { year: "", theme: "" };
+
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      const group = chip.dataset.filter;
+      document.querySelectorAll(`.chip[data-filter="${group}"]`).forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      activeFilters[group] = chip.dataset.value;
+      applyFilters();
+    });
+  });
 
   function applyFilters() {
-    const year = document.getElementById("filter-year").value;
-    const theme = document.getElementById("filter-theme").value;
-    const topic = document.getElementById("filter-topic").value;
     const search = document.getElementById("search-input").value.toLowerCase();
     cards.forEach(card => {
       const title = card.querySelector(".work-title").textContent.toLowerCase();
       const match =
-        (!year || card.dataset.year === year) &&
-        (!theme || card.dataset.theme === theme) &&
-        (!topic || card.dataset.topic === topic) &&
+        (!activeFilters.year || card.dataset.year === activeFilters.year) &&
+        (!activeFilters.theme || card.dataset.theme === activeFilters.theme) &&
         (!search || title.includes(search));
       card.classList.toggle("hidden", !match);
     });
   }
 
-  filters.forEach(f => f.addEventListener("change", applyFilters));
   document.getElementById("search-input").addEventListener("input", applyFilters);
-  clearBtn.addEventListener("click", () => {
-    filters.forEach(f => (f.value = ""));
-    document.getElementById("search-input").value = "";
-    cards.forEach(c => c.classList.remove("hidden"));
-  });
 
   // Click image → detail page
   cards.forEach(card => {
@@ -39,93 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Cart
-  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-  function saveCart() { localStorage.setItem("cart", JSON.stringify(cart)); }
-
-  function renderCart() {
-    const countEl = document.getElementById("cart-count");
-    const itemsEl = document.getElementById("cart-items");
-    const totalEl = document.getElementById("cart-total");
-    countEl.textContent = cart.length;
-    itemsEl.innerHTML = cart.length === 0
-      ? '<p style="color:#999;font-size:0.9rem;">Your cart is empty.</p>'
-      : cart.map((item, i) => `
-        <div class="cart-item">
-          <div class="cart-item-info">${item.title}<small>${item.size} — $${item.price}</small></div>
-          <button class="cart-item-remove" data-index="${i}" aria-label="Remove">&times;</button>
-        </div>`).join("");
-    totalEl.textContent = cart.reduce((sum, item) => sum + Number(item.price), 0).toLocaleString();
-    itemsEl.querySelectorAll(".cart-item-remove").forEach(btn => {
-      btn.addEventListener("click", () => {
-        cart.splice(Number(btn.dataset.index), 1);
-        saveCart();
-        renderCart();
-      });
-    });
-  }
-
-  // Toggle sidebar
-  const sidebar = document.getElementById("cart-sidebar");
-  const overlay = document.getElementById("cart-overlay");
-  document.getElementById("cart-toggle").addEventListener("click", () => { sidebar.hidden = false; overlay.hidden = false; });
-  document.getElementById("cart-close").addEventListener("click", closeCart);
-  overlay.addEventListener("click", closeCart);
-  function closeCart() { sidebar.hidden = true; overlay.hidden = true; }
-
-  // Add to cart — find sibling select
-  document.querySelectorAll(".add-cart-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const select = btn.parentElement.querySelector(".size-select");
-      const option = select.options[select.selectedIndex];
-      cart.push({ title: btn.dataset.title, size: option.text, price: option.value });
-      saveCart();
-      renderCart();
-      sidebar.hidden = false;
-      overlay.hidden = false;
-    });
-  });
-
-  // Prevent select clicks from navigating to detail page
-  document.querySelectorAll(".size-select").forEach(s => s.addEventListener("click", e => e.stopPropagation()));
-
-  // Wishlist
+  // Wishlist (kept for future use — no UI buttons currently)
   let wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
-
-  function renderWishlist() {
-    document.querySelectorAll(".wishlist-btn").forEach(btn => {
-      const title = btn.dataset.title;
-      const saved = wishlist.includes(title);
-      btn.textContent = saved ? "\u2665" : "\u2661";
-      btn.classList.toggle("saved", saved);
-    });
-  }
-
-  document.querySelectorAll(".wishlist-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const title = btn.dataset.title;
-      if (wishlist.includes(title)) {
-        wishlist = wishlist.filter(t => t !== title);
-      } else {
-        wishlist.push(title);
-      }
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      renderWishlist();
-    });
-  });
-
-  renderWishlist();
-
-  // Checkout placeholder
-  document.getElementById("cart-checkout").addEventListener("click", () => {
-    if (cart.length === 0) return;
-    alert("Redirecting to payment...\n(Connect Stripe here)");
-  });
-
-  renderCart();
 
   // Newsletter popup — first-time visitors only
   if (!localStorage.getItem("newsletter_seen")) {
