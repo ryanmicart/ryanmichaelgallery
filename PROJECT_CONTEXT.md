@@ -97,6 +97,50 @@ No prices shown. Users select product type (Fine Art Print, Mug/Cup, T-Shirt, Ta
 - Custom domain set in GitHub repo Settings → Pages → ryanmichael.com.au
 - Status: DNS pending propagation (up to 24hrs), HTTPS will auto-provision after
 
+## Session Updates (June 21 2026)
+
+### Saatchi-Inspired Redesign
+Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
+
+#### Nav — reduced to 3 tabs only
+- Gallery · Inequality 2026 · Contact
+- Removed: About, Media & Events, Shipping, FAQ as separate nav items
+
+#### Hero
+- Now full-viewport height (100vh) instead of fixed clamp height
+- Single CTA: "View Works" button
+
+#### About / Bio
+- Moved inline as a section below the hero on index.html
+- No longer a separate nav destination
+
+#### Artwork Cards
+- Removed: price dropdowns, Add to Cart button, wishlist heart
+- Added: medium + dimensions subtitle (e.g. "Photography · 60 × 80 cm")
+- Added: "Enquire" hover overlay on each card image (links to #contact)
+- Cart sidebar and cart JS removed from index.html (cart still exists in detail.js / artwork.html if needed)
+
+#### Filter Chips
+- Replaced 3 dropdown selects (Year, Theme, Topic) with horizontal pill chip buttons
+- Two filter rows: Year chips + Theme chips
+- Active chip highlighted in black
+
+#### Contact Section (merged)
+- Enquiry form remains at top
+- Shipping & Returns accordion added below form
+- FAQ accordion added below shipping
+- faq.html and shipping.html still exist as files but are no longer linked from nav or footer
+
+#### Files changed
+- index.html — full rewrite
+- styles.css — hero full-viewport, chip styles, enquire overlay, work-meta, info-block
+- script.js — chip filter logic, removed cart/wishlist/size-select code
+
+#### Deployed
+- Commit: a4f74fc
+- Pushed to main → ryanmichael.com.au (GitHub Pages)
+
 ## Notes
 - Instagram sharing not implemented (Instagram API doesn't support posting from static sites; discussed alternatives)
 - Screenshot prevention is best-effort (watermark is the real protection since OS-level screenshots can't be blocked)
+- faq.html and shipping.html can be deleted — content is now in the Contact section of index.html
