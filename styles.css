@@ -252,7 +252,8 @@ footer { text-align: center; padding: 2rem; border-top: 1px solid #e0e0e0; color
 
 /* INEQUALITY EXHIBITION */
 .exhibition-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-.exhibition-item .card-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; filter: blur(20px); }
+.exhibition-item .card-image { overflow: hidden; }
+.exhibition-item .card-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; filter: blur(20px); transform: scale(1.05); }
 
 /* SOLD OVERLAY */
 .card-image { position: relative; }
