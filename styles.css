@@ -183,8 +183,18 @@ footer { text-align: center; padding: 2rem; border-top: 1px solid #e0e0e0; color
 
 
 /* HERO */
-#hero { max-width: 100%; padding: 0; position: relative; height: 100vh; min-height: 500px; }
-#hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+#hero { max-width: 100%; padding: 0; position: relative; height: 100vh; min-height: 500px; overflow: hidden; }
+
+/* Slideshow */
+.hero-slideshow { position: absolute; inset: 0; }
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.hero-slide.active { opacity: 1; }
 .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.38); color: #fff; text-align: center; }
 .hero-overlay h2 { font-family: 'Ubuntu', sans-serif; font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: clamp(4px, 1vw, 10px); text-transform: uppercase; margin-bottom: 0.6rem; }
 .hero-overlay p { font-size: clamp(0.9rem, 1.5vw, 1.15rem); margin-bottom: 2rem; opacity: 0.85; letter-spacing: 1px; }

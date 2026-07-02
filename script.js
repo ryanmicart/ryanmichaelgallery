@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Hero slideshow — cycles every 5 seconds
+  const slides = document.querySelectorAll(".hero-slide");
+  if (slides.length > 1) {
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 5000);
+  }
+
   // Catalogue filtering — chip buttons
   const cards = document.querySelectorAll(".work-card");
   const activeFilters = { year: "", theme: "" };
