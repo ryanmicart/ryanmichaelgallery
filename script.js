@@ -62,6 +62,35 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("newsletter_seen", "1");
   }
 
+  // REELS — tap/click to play or pause
+  document.querySelectorAll(".reel-card").forEach(card => {
+    const video = card.querySelector("video");
+    const btn = card.querySelector(".reel-play");
+
+    // Use IntersectionObserver to autoplay when in view, pause when out
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play().then(() => card.classList.add("playing")).catch(() => {});
+        } else {
+          video.pause();
+          card.classList.remove("playing");
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(card);
+
+    // Click anywhere on the card to toggle play/pause
+    card.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().then(() => card.classList.add("playing")).catch(() => {});
+      } else {
+        video.pause();
+        card.classList.remove("playing");
+      }
+    });
+  });
+
   // Image protection: watermark overlay + disable right-click on images
   function addWatermark(container) {
     const canvas = document.createElement("canvas");

@@ -408,3 +408,64 @@ body {
     .card-image img, .detail-viewer img, .related-card img { visibility: hidden; }
     .watermark-overlay { opacity: 1; }
 }
+
+/* REELS */
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+}
+.reel-card {
+    position: relative;
+    cursor: pointer;
+    background: #111;
+    overflow: hidden;
+}
+.reel-card video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s;
+}
+.reel-card:hover video {
+    opacity: 0.85;
+}
+.reel-play {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+.reel-play.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.reel-card.playing .reel-play {
+    opacity: 0;
+}
+.reel-card.playing:hover .reel-play {
+    opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+    .reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+}
+@media (min-width: 1200px) {
+    .reels-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
