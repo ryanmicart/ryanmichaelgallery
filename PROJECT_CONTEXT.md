@@ -140,7 +140,38 @@ Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
 - Commit: a4f74fc
 - Pushed to main → ryanmichael.com.au (GitHub Pages)
 
+## Session Updates (July 2 2026)
+
+### About / Bio — Updated with real text
+- Source file: C:\Users\rsm80\OneDrive\Documents\Art Website\About Me.docx
+- Replaced placeholder bio in #about section of index.html with real biography
+- 5 paragraphs covering: practice overview, academic background (Curtin Master's, Myanmar thesis, apprenticeship with Bamba Surang in Mauritius), evolution from street photography to portraiture, themes of inequality and immigrant identity, artistic philosophy
+- Commit: 610c7eb
+
+### Reels Section — Added
+- 7 MP4 files copied from C:\Users\rsm80\OneDrive\Documents\Art Website\Art Reels\ into website_project/reels/
+- Files: 17890768773052858.mp4, 17923116144005158.mp4, 17947289363907724.mp4, 18048375338092318.mp4, 18049870856087218.mp4, 18069077215678762.mp4, 18364597924186010.mp4
+- New #reels section added to index.html between Gallery and Inequality 2026
+- "Reels" nav link added (nav is now: Gallery · Reels · Inequality 2026 · Contact)
+- Portrait aspect ratio (9:16) grid — auto-fill minmax 200px columns
+- On large screens (≥1200px): all 7 in a single row
+- On mobile (≤480px): 2-column grid
+- Behaviour: autoplay muted loop when scrolled into view (IntersectionObserver, 50% threshold), click to pause/resume
+- Commit: a4003dd
+
+### DNS Issue — Not yet resolved
+- Site is NOT live at ryanmichael.com.au due to DNS misconfiguration in Crazy Domains
+- Root domain A records mostly correct (GitHub Pages IPs) but 27.124.125.171 (Crazy Domains) also present — needs removing
+- www CNAME resolves only to 27.124.125.171 — NOT pointing to ryanmicart.github.io
+- Fix required in Crazy Domains DNS settings:
+  1. Change www CNAME value to: ryanmicart.github.io
+  2. Remove 27.124.125.171 from root A records — keep only:
+     185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+  3. After propagation: confirm GitHub Pages Settings → Custom domain = ryanmichael.com.au, Enforce HTTPS ticked
+- GitHub Pages and all code pushes are working correctly — DNS is the only blocker
+
 ## Notes
 - Instagram sharing not implemented (Instagram API doesn't support posting from static sites; discussed alternatives)
 - Screenshot prevention is best-effort (watermark is the real protection since OS-level screenshots can't be blocked)
 - faq.html and shipping.html can be deleted — content is now in the Contact section of index.html
+- Font: Ubuntu (Google Fonts) — applied to logo, headings, body. Earlier notes referencing Cormorant Garamond are outdated.
