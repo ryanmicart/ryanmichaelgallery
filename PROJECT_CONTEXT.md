@@ -170,6 +170,22 @@ Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
   3. After propagation: confirm GitHub Pages Settings → Custom domain = ryanmichael.com.au, Enforce HTTPS ticked
 - GitHub Pages and all code pushes are working correctly — DNS is the only blocker
 
+## Session Updates (July 2 2026 — Evening)
+
+### Hero Slideshow
+- Replaced single static cover image (Freedom.JPG) with a 3-image crossfade slideshow
+- Images cycle every 5 seconds with a 1-second fade transition
+- Cover images used:
+  1. Freedom.JPG (already in website_project/)
+  2. _MG_1545.JPG — copied from C:\Users\rsm80\OneDrive\Documents\Art Website\Cover Images\
+  3. _MG_1372.JPG — copied from C:\Users\rsm80\OneDrive\Documents\Art Website\Cover Images\
+- Implementation:
+  - index.html: `.hero-slideshow` div containing 3 `.hero-slide` divs with background-image; first slide has `class="active"`
+  - styles.css: slides are `position: absolute; opacity: 0` by default; `.active` sets `opacity: 1` with `transition: opacity 1s ease-in-out`
+  - script.js: `setInterval` at top of DOMContentLoaded rotates `.active` class every 5000ms
+- Commit: fb45235
+- Pushed to main → ryanmichael.com.au (GitHub Pages)
+
 ## Notes
 - Instagram sharing not implemented (Instagram API doesn't support posting from static sites; discussed alternatives)
 - Screenshot prevention is best-effort (watermark is the real protection since OS-level screenshots can't be blocked)
