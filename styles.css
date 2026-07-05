@@ -467,6 +467,15 @@ body {
 .reel-card.playing:hover .reel-play {
     opacity: 0.6;
 }
+.reel-title {
+    margin: 0;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    color: #ccc;
+    letter-spacing: 0.04em;
+    background: #111;
+    text-align: center;
+}
 
 @media (max-width: 480px) {
     .reels-grid {
