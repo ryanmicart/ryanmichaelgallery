@@ -73,6 +73,20 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("newsletter_seen", "1");
   }
 
+  // PHOTOGRAPHY TABS
+  document.querySelectorAll(".photo-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".photo-tab").forEach(t => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      document.querySelectorAll(".photo-panel").forEach(p => p.classList.remove("active"));
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      document.getElementById("panel-" + tab.dataset.country).classList.add("active");
+    });
+  });
+
   // REELS — tap/click to play or pause
   document.querySelectorAll(".reel-card").forEach(card => {
     const video = card.querySelector("video");

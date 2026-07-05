@@ -419,6 +419,54 @@ body {
     .watermark-overlay { opacity: 1; }
 }
 
+/* PHOTOGRAPHY TABS */
+.photo-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0;
+}
+.photo-tab {
+    padding: 0.6rem 1.4rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 0.88rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+}
+.photo-tab:hover { color: #1a1a1a; }
+.photo-tab.active {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+    font-weight: 600;
+}
+.photo-panel { display: none; }
+.photo-panel.active { display: block; }
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+.photo-grid img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+}
+.photo-coming-soon {
+    color: #aaa;
+    font-size: 0.9rem;
+    padding: 2rem 0;
+}
+
 /* REELS */
 .reels-grid {
     display: grid;
