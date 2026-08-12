@@ -568,3 +568,29 @@ body {
         grid-template-columns: repeat(7, 1fr);
     }
 }
+
+/* MERCHANDISE GRID */
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+.merch-card {
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    background: #fafafa;
+}
+.merch-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.merch-card:hover img {
+    transform: scale(1.03);
+}
+@media (max-width: 480px) {
+    .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+}
