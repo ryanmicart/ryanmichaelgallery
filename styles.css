@@ -467,6 +467,38 @@ body {
     padding: 2rem 0;
 }
 
+/* INEQUALITY EXHIBITION TABS */
+.ineq-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0;
+}
+.ineq-tab {
+    padding: 0.6rem 1.4rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 0.88rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+}
+.ineq-tab:hover { color: #1a1a1a; }
+.ineq-tab.active {
+    color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+    font-weight: 600;
+}
+.ineq-panel { display: none; }
+.ineq-panel.active { display: block; }
+
 /* REELS */
 .reels-grid {
     display: grid;

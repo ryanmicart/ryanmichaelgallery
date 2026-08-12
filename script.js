@@ -109,6 +109,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ─── INEQUALITY EXHIBITION TABS ───────────────────────────────────────────
+  const ineqTabs = document.querySelectorAll(".ineq-tab");
+  if (ineqTabs.length) {
+    ineqTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".ineq-tab").forEach(t => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        document.querySelectorAll(".ineq-panel").forEach(p => p.classList.remove("active"));
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+        const panel = document.getElementById("ineq-panel-" + tab.dataset.panel);
+        if (panel) panel.classList.add("active");
+      });
+    });
+  }
+
   // ─── REELS ────────────────────────────────────────────────────────────────
   document.querySelectorAll(".reel-card").forEach(card => {
     const video = card.querySelector("video");

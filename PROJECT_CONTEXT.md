@@ -3,13 +3,14 @@
 **Location:** C:\Users\rsm80\OneDrive\Documents\Art Website\website_project
 
 ## Files
-- index.html - main page with catalogue, hero, cart, newsletter, inequality exhibition section
-- artwork.html - detail page with zoom, gallery mockups, wall preview, purchase options
+- index.html - main page: hero slideshow, about/bio, reels, photography tabs, inequality exhibition, contact/FAQ/shipping
+- artwork.html - detail page with zoom, gallery mockups, wall preview, purchase quote form
 - styles.css - all styling
-- script.js - catalogue filters, cart, wishlist, newsletter, image protection
+- script.js - hero slideshow, reels autoplay, photography tabs, newsletter popup, image protection (catalogue/filter code guarded — not active)
 - detail.js - zoom, tabs, wall preview, purchase quote form, image protection
-- faq.html, shipping.html - info pages
-- inequality-exhibition/ - folder containing 5 real photos for the Inequality Exhibition 2026 section
+- faq.html, shipping.html - exist but not linked (content merged into #contact section)
+- inequality-exhibition/ - 5 real photos
+- reels/ - 20 MP4 files (7 numbered originals + 13 named reels)
 
 ## Features Implemented (May 2026)
 
@@ -186,8 +187,66 @@ Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
 - Commit: fb45235
 - Pushed to main → ryanmichael.com.au (GitHub Pages)
 
+## Session Updates (July 5 2026)
+
+### 13 New Named Reels Added
+- New MP4 files copied from C:\Users\rsm80\OneDrive\Documents\Art Website\Art Reels\ into website_project/reels/
+- Files added (kebab-case names):
+  - indian-freedom.mp4
+  - lewis-hamilton.mp4
+  - barrack-obama.mp4
+  - abstract-city-scape.mp4
+  - indigenous-lady.mp4
+  - gandhi.mp4
+  - anthony-bourdaine-train.mp4
+  - actor-orange.mp4
+  - contemporary-lady-portrait.mp4
+  - lady-panther.mp4
+  - finding-our-way-home.mp4
+  - ady-fidelin-paris.mp4
+  - nelson-mandela.mp4
+- All 13 added as reel-card entries in index.html with .reel-title labels
+- Total reels on page: 20 (7 original numbered + 13 new named)
+- Commit: 69a8e58
+
+### Mobile JS Crash Fix
+- Bug: script.js called `document.getElementById("search-input").addEventListener(...)` — but #search-input was removed in the June redesign
+- This caused an uncaught TypeError on page load, crashing all JS (reels, tabs, newsletter) on mobile
+- Fix: wrapped all catalogue/search/filter/chip code in a guard (`if (cards.length && searchInput)`) so it only runs when those elements exist
+- Also added null checks throughout for robustness
+- Additional fixes in index.html:
+  - Hero CTA "View Works" button: changed href from broken `#catalogue` → `#reels`
+  - Nav: removed duplicate "Gallery" link (both Gallery and Reels pointed to #reels); nav is now: Reels · Photography · Inequality 2026 · Contact
+- Commit: ad0decb
+- Pushed to main → ryanmichael.com.au (GitHub Pages)
+
+## Session Updates (August 12 2026)
+
+### Nav Tab Renamed
+- "Inequality 2026" → "Inequality Exhibition" in nav and section heading
+
+### Inequality Exhibition — 4 Sub-tabs Added
+- Section now has 4 clickable sub-tabs using the same pattern as Photography tabs
+- CSS classes: `.ineq-tabs`, `.ineq-tab`, `.ineq-tab.active`, `.ineq-panel`, `.ineq-panel.active`
+- JS: new block in script.js using `data-panel` attribute and `ineq-panel-{name}` IDs
+- Tab 1: **Motivation** — real content from Exhibition Motivation.docx ("The Exhibition" section)
+- Tab 2: **Inspiration** — real content from Exhibition Motivation.docx ("The Inspiration" section)
+- Tab 3: **Message** — real content from Exhibition Motivation.docx ("The Message" section)
+- Tab 4: **Merchandise** — placeholder (content pending)
+- Source file: C:\Users\rsm80\OneDrive\Documents\Art Website\Inequality Exhibition\Exhibition Motivation.docx
+
+### Exhibition Posters Copied to website_project
+- poster-mps.png — Manning Primary School Library, 5–11 Oct
+- poster-langley.png — Langley Park Pavillion, 3–4 Oct
+- Source: C:\Users\rsm80\OneDrive\Documents\Art Website\Promotional Material\
+
+### Pending
+- Exhibition banner / front-page poster promotion (not yet implemented — in progress)
+- Merchandise tab content (images in C:\Users\rsm80\OneDrive\Documents\Art Website\Merchandise\: 79651.png, 79653.png, 79666.png, 79668.png)
+
 ## Notes
 - Instagram sharing not implemented (Instagram API doesn't support posting from static sites; discussed alternatives)
 - Screenshot prevention is best-effort (watermark is the real protection since OS-level screenshots can't be blocked)
 - faq.html and shipping.html can be deleted — content is now in the Contact section of index.html
 - Font: Ubuntu (Google Fonts) — applied to logo, headings, body. Earlier notes referencing Cormorant Garamond are outdated.
+- DNS issue (Crazy Domains misconfiguration) unresolved as of July 2 — see July 2 session notes for fix instructions
