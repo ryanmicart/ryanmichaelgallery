@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed — Ryan Michael</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Ryan Michael</a>
+            <nav>
+                <a href="index.html#photography">Photography</a>
+                <a href="index.html#inequality-exhibition">Exhibition</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="confirmed-page">
+
+        <div class="confirmed-card">
+            <div class="confirmed-icon">✓</div>
+            <h2>Thank you for your order!</h2>
+            <p class="confirmed-intro">Your payment was successful. A confirmation email will be sent to you shortly.</p>
+
+            <div class="confirmed-details" id="confirmed-details">
+                <!-- Filled by JS from URL params or sessionStorage -->
+            </div>
+
+            <div class="confirmed-steps">
+                <h3>What happens next?</h3>
+                <ol>
+                    <li>You'll receive an email receipt from Stripe with your order reference.</li>
+                    <li>Ryan will personally prepare your order within <strong>3–5 business days</strong> (prints) or <strong>7–10 business days</strong> (originals).</li>
+                    <li>You'll receive a shipping notification with tracking once dispatched.</li>
+                </ol>
+            </div>
+
+            <p class="confirmed-contact">Questions? <a href="index.html#contact">Get in touch</a>.</p>
+
+            <a href="index.html" class="btn-confirmed-home">Back to Home</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html#contact">Shipping &amp; Returns</a>
+            <a href="index.html#contact">FAQ</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <p>&copy; 2026 Ryan Michael. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Show order details if passed via sessionStorage
+        (function () {
+            const details = document.getElementById("confirmed-details");
+            const stored  = sessionStorage.getItem("rm_last_order");
+            if (!stored || !details) return;
+            try {
+                const order = JSON.parse(stored);
+                details.innerHTML = `
+                    <div class="confirmed-order-row"><span>Item</span><strong>${order.product || "—"}</strong></div>
+                    ${order.artwork ? `<div class="confirmed-order-row"><span>Artwork</span><strong>${order.artwork}</strong></div>` : ""}
+                    ${order.size    ? `<div class="confirmed-order-row"><span>Size</span><strong>${order.size}</strong></div>` : ""}
+                    <div class="confirmed-order-row"><span>Ship to</span><strong>${order.name || "—"}</strong></div>
+                `;
+                sessionStorage.removeItem("rm_last_order");
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+
+</body>
+</html>

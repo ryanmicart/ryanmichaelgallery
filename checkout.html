@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout — Ryan Michael</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Ryan Michael</a>
+            <nav>
+                <a href="index.html#photography">Photography</a>
+                <a href="index.html#inequality-exhibition">Exhibition</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="checkout-page">
+
+        <a href="javascript:history.back()" class="back-link">&larr; Back</a>
+        <h2 class="checkout-heading">Checkout</h2>
+        <p class="checkout-subheading">Complete your details below, then proceed to secure payment.</p>
+
+        <div class="checkout-layout">
+
+            <!-- ── ORDER SUMMARY PANEL ── -->
+            <aside class="checkout-summary">
+                <h3>Order Summary</h3>
+                <div id="summary-item" class="summary-item">
+                    <div class="summary-item-details">
+                        <p class="summary-title" id="summary-title">—</p>
+                        <p class="summary-meta" id="summary-meta"></p>
+                    </div>
+                    <p class="summary-price" id="summary-price">—</p>
+                </div>
+                <div class="summary-shipping-row">
+                    <span>Shipping</span>
+                    <span id="summary-shipping">Calculated below</span>
+                </div>
+                <div class="summary-total-row">
+                    <span>Total</span>
+                    <span id="summary-total">—</span>
+                </div>
+                <p class="summary-note">Prices in AUD. Secure payment via Stripe.</p>
+            </aside>
+
+            <!-- ── ORDER FORM ── -->
+            <form id="checkout-form" class="checkout-form" novalidate>
+
+                <!-- Product (pre-filled from URL, editable) -->
+                <fieldset class="checkout-fieldset">
+                    <legend>What would you like?</legend>
+
+                    <div class="form-row">
+                        <label for="co-product">Product</label>
+                        <select id="co-product" name="product" required>
+                            <option value="">— select —</option>
+                            <optgroup label="Fine Art Prints">
+                                <option value="print-a4"   data-price="75"  data-label="Fine Art Print — A4">Fine Art Print — A4  ($75)</option>
+                                <option value="print-a3"   data-price="120" data-label="Fine Art Print — A3">Fine Art Print — A3  ($120)</option>
+                                <option value="print-a2"   data-price="190" data-label="Fine Art Print — A2">Fine Art Print — A2  ($190)</option>
+                                <option value="print-ltd"  data-price="280" data-label="Limited Edition Print (signed &amp; numbered)">Limited Edition Print — signed &amp; numbered ($280)</option>
+                            </optgroup>
+                            <optgroup label="Merchandise">
+                                <option value="merch-tshirt"  data-price="45"  data-label="T-Shirt">T-Shirt  ($45)</option>
+                                <option value="merch-mug"     data-price="28"  data-label="Mug / Cup">Mug / Cup  ($28)</option>
+                                <option value="merch-bag"     data-price="35"  data-label="Canvas Bag">Canvas Bag  ($35)</option>
+                            </optgroup>
+                            <optgroup label="Original Artwork">
+                                <option value="original" data-price="0" data-label="Original Painting (price on enquiry)">Original Painting — price on enquiry</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-row" id="artwork-row">
+                        <label for="co-artwork">Artwork / Image</label>
+                        <input type="text" id="co-artwork" name="artwork" placeholder="e.g. Hunger India No. 2">
+                    </div>
+
+                    <div class="form-row" id="size-row" style="display:none;">
+                        <label for="co-size">Size / Variant</label>
+                        <select id="co-size" name="size">
+                            <option value="">— select —</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+
+                <!-- Shipping details -->
+                <fieldset class="checkout-fieldset">
+                    <legend>Shipping Details</legend>
+
+                    <div class="form-row form-row--half">
+                        <div>
+                            <label for="co-first">First name</label>
+                            <input type="text" id="co-first" name="first_name" required placeholder="First name">
+                        </div>
+                        <div>
+                            <label for="co-last">Last name</label>
+                            <input type="text" id="co-last" name="last_name" required placeholder="Last name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="co-email">Email address</label>
+                        <input type="email" id="co-email" name="email" required placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="co-phone">Phone (optional)</label>
+                        <input type="tel" id="co-phone" name="phone" placeholder="+61 400 000 000">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="co-address">Street address</label>
+                        <input type="text" id="co-address" name="address" required placeholder="123 Example St">
+                    </div>
+
+                    <div class="form-row form-row--half">
+                        <div>
+                            <label for="co-city">City / Suburb</label>
+                            <input type="text" id="co-city" name="city" required placeholder="Perth">
+                        </div>
+                        <div>
+                            <label for="co-postcode">Postcode</label>
+                            <input type="text" id="co-postcode" name="postcode" required placeholder="6000">
+                        </div>
+                    </div>
+
+                    <div class="form-row form-row--half">
+                        <div>
+                            <label for="co-state">State / Region</label>
+                            <input type="text" id="co-state" name="state" placeholder="WA">
+                        </div>
+                        <div>
+                            <label for="co-country">Country</label>
+                            <select id="co-country" name="country" required>
+                                <option value="AU" selected>Australia</option>
+                                <option value="NZ">New Zealand</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="ZA">South Africa</option>
+                                <option value="IN">India</option>
+                                <option value="MU">Mauritius</option>
+                                <option value="NA">Namibia</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <!-- Notes -->
+                <fieldset class="checkout-fieldset">
+                    <legend>Order Notes <span class="optional-label">(optional)</span></legend>
+                    <div class="form-row">
+                        <label for="co-notes">Any special instructions or requests</label>
+                        <textarea id="co-notes" name="notes" rows="3" placeholder="e.g. gift wrapping, framing preference, commission details…"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Validation message -->
+                <p class="checkout-error" id="checkout-error" hidden></p>
+
+                <!-- Submit -->
+                <div class="checkout-actions">
+                    <button type="submit" class="btn-pay-now" id="btn-pay-now">
+                        <span id="btn-pay-label">Proceed to Payment</span>
+                        <span class="btn-pay-icon">🔒</span>
+                    </button>
+                    <p class="checkout-secure-note">Secure payment powered by <strong>Stripe</strong>. Your card details are never stored on this site.</p>
+                </div>
+
+            </form>
+
+        </div><!-- /.checkout-layout -->
+    </div><!-- /.checkout-page -->
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html#contact">Shipping &amp; Returns</a>
+            <a href="index.html#contact">FAQ</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <p>&copy; 2026 Ryan Michael. All rights reserved.</p>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
