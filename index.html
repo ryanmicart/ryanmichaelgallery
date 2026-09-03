@@ -23,9 +23,9 @@
     <!-- HERO: full-viewport slideshow -->
     <section id="hero">
         <div class="hero-slideshow">
-            <div class="hero-slide active" style="background-image: url('Freedom.JPG')"></div>
-            <div class="hero-slide" style="background-image: url('_MG_1545.JPG')"></div>
-            <div class="hero-slide" style="background-image: url('_MG_1372.JPG')"></div>
+            <div class="hero-slide active" style="background-image: url('cover-1.JPG')"></div>
+            <div class="hero-slide" style="background-image: url('cover-2.JPG')"></div>
+            <div class="hero-slide" style="background-image: url('cover-3.JPG')"></div>
         </div>
         <div class="hero-overlay">
             <h2>Ryan Michael</h2>
@@ -38,28 +38,36 @@
     <section id="exhibition-banner">
         <div class="exhibition-banner-inner">
             <div class="exhibition-banner-text">
-                <p class="exhibition-banner-label">Now Showing</p>
+                <p class="exhibition-banner-label">Exhibition Tour — 3–18 October</p>
                 <h2>The Marginalised —<br>Who Is Looking Out For Them?</h2>
-                <p class="exhibition-banner-subtitle">An Independent Exhibition by Ryan Michael</p>
+                <p class="exhibition-banner-subtitle">An Independent Exhibition by Ryan Michael<br>Proudly supported by City of Perth &amp; Indian Society of Western Australia</p>
                 <div class="exhibition-events">
                     <div class="exhibition-event">
-                        <strong>3–4 Oct</strong>
-                        <span>Langley Park Pavillion, Terrace Rd, Perth CBD</span>
-                        <span>Sat 2.30pm–9.00pm · Sun 10.00am–4.00pm</span>
-                        <span class="exhibition-entry">$10 Adults · Free for Kids</span>
+                        <strong>3 Oct</strong>
+                        <span>Launch Event — Langley Park Pavillion, Perth</span>
+                        <span>6:30pm–9:00pm</span>
+                        <button class="rsvp-tab-btn" id="rsvp-open-btn" aria-haspopup="dialog">RSVP for Launch Event</button>
+                    </div>
+                    <div class="exhibition-event">
+                        <strong>4 Oct</strong>
+                        <span>Open to Public — Langley Park Pavillion, Perth</span>
+                        <span>10:00am–5:00pm</span>
                     </div>
                     <div class="exhibition-event">
                         <strong>5–11 Oct</strong>
-                        <span>Manning Primary School Library, Ley St, Manning WA</span>
-                        <span>Weekdays 12.30pm–4.30pm · Weekend 10.30am–3.30pm</span>
-                        <span class="exhibition-entry">Free Entry for MPS Students &amp; Families</span>
+                        <span>Manning Primary School, Manning</span>
+                        <span>10:30am–4:30pm</span>
+                    </div>
+                    <div class="exhibition-event">
+                        <strong>18 Oct</strong>
+                        <span>Rod Evens Community Centre, East Perth</span>
+                        <span>4:00pm–8:00pm</span>
                     </div>
                 </div>
                 <a href="#inequality-exhibition" class="exhibition-banner-cta">Learn More</a>
             </div>
             <div class="exhibition-banner-posters">
-                <img src="poster-langley.png" alt="Langley Park Exhibition Poster — 3–4 October">
-                <img src="poster-mps.png"     alt="Manning Primary School Exhibition Poster — 5–11 October">
+                <img src="poster-all-dates.png" alt="Ryan Michael Art Exhibition Tour — 3–18 October">
             </div>
         </div>
     </section>
@@ -496,6 +504,60 @@
             <input type="email" id="newsletter-email" placeholder="Your email" required>
             <button type="submit">Subscribe</button>
         </form>
+    </div>
+
+    <!-- RSVP MODAL -->
+    <div id="rsvp-overlay" class="rsvp-overlay" hidden></div>
+    <div id="rsvp-modal" class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-modal-title" hidden>
+        <button class="rsvp-modal-close" id="rsvp-close-btn" aria-label="Close">&times;</button>
+        <div class="rsvp-modal-header">
+            <p class="rsvp-modal-label">Launch Event · 3 October · 6:30–9:00pm</p>
+            <h3 id="rsvp-modal-title">RSVP — Langley Park Pavillion, Perth</h3>
+        </div>
+
+        <!-- Form state -->
+        <form id="rsvp-form" class="rsvp-form" novalidate>
+            <div class="rsvp-row rsvp-row--half">
+                <div class="rsvp-field">
+                    <label for="rsvp-first-name">First Name <span class="rsvp-required">*</span></label>
+                    <input type="text" id="rsvp-first-name" name="firstName" placeholder="First name" required autocomplete="given-name">
+                </div>
+                <div class="rsvp-field">
+                    <label for="rsvp-last-name">Last Name <span class="rsvp-required">*</span></label>
+                    <input type="text" id="rsvp-last-name" name="lastName" placeholder="Last name" required autocomplete="family-name">
+                </div>
+            </div>
+            <div class="rsvp-field">
+                <label for="rsvp-email">Email Address <span class="rsvp-required">*</span></label>
+                <input type="email" id="rsvp-email" name="email" placeholder="your@email.com" required autocomplete="email">
+            </div>
+            <div class="rsvp-field">
+                <label for="rsvp-phone">Phone Number <span class="rsvp-required">*</span></label>
+                <input type="tel" id="rsvp-phone" name="phone" placeholder="04xx xxx xxx" required autocomplete="tel">
+            </div>
+            <div class="rsvp-field">
+                <label for="rsvp-guests">Number of Guests Attending <span class="rsvp-required">*</span></label>
+                <select id="rsvp-guests" name="guests" required>
+                    <option value="">Select…</option>
+                    <option value="1">1 person (just me)</option>
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                    <option value="5">5 people</option>
+                    <option value="6+">6 or more</option>
+                </select>
+            </div>
+            <div id="rsvp-error" class="rsvp-error" hidden></div>
+            <button type="submit" class="rsvp-submit-btn" id="rsvp-submit-btn">Confirm RSVP</button>
+        </form>
+
+        <!-- Success state (hidden until submitted) -->
+        <div id="rsvp-success" class="rsvp-success" hidden>
+            <div class="rsvp-success-icon">✓</div>
+            <h4>You're on the list!</h4>
+            <p>Thanks for RSVPing to the Launch Event. We look forward to seeing you on <strong>3 October</strong> at Langley Park Pavillion.</p>
+            <button class="rsvp-submit-btn" id="rsvp-done-btn">Close</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
