@@ -34,6 +34,9 @@
         </div>
     </section>
 
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
     <!-- EXHIBITION BANNER -->
     <section id="exhibition-banner">
         <div class="exhibition-banner-inner">
@@ -59,6 +62,11 @@
                         <span>10:30am–4:30pm</span>
                     </div>
                     <div class="exhibition-event">
+                        <strong>12–17 Oct</strong>
+                        <span>Indian Society of WA, Willeton</span>
+                        <span>10:30am–4:30pm</span>
+                    </div>
+                    <div class="exhibition-event">
                         <strong>18 Oct</strong>
                         <span>Rod Evens Community Centre, East Perth</span>
                         <span>4:00pm–8:00pm</span>
@@ -69,6 +77,15 @@
             <div class="exhibition-banner-posters">
                 <img src="poster-all-dates.png" alt="Ryan Michael Art Exhibition Tour — 3–18 October">
             </div>
+        </div>
+    </section>
+
+    <!-- EXHIBITION MAP -->
+    <section id="exhibition-map">
+        <div class="exhibition-map-inner">
+            <h3>Exhibition Venue Locations</h3>
+            <p class="exhibition-map-subtitle">All five venues across the Perth metropolitan area</p>
+            <div id="map" style="height: 420px; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.18);"></div>
         </div>
     </section>
 
@@ -511,7 +528,7 @@
     <div id="rsvp-modal" class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-modal-title" hidden>
         <button class="rsvp-modal-close" id="rsvp-close-btn" aria-label="Close">&times;</button>
         <div class="rsvp-modal-header">
-            <p class="rsvp-modal-label">Launch Event · 3 October · 6:30–9:00pm</p>
+            <p class="rsvp-modal-label">Launch Event · 3 October · 6:30pm–9:00pm</p>
             <h3 id="rsvp-modal-title">RSVP — Langley Park Pavillion, Perth</h3>
         </div>
 
@@ -561,5 +578,75 @@
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN2GqCw=" crossorigin=""></script>
+    <script>
+    (function() {
+        var mapEl = document.getElementById('map');
+        if (!mapEl) return;
+
+        var venues = [
+            {
+                label: '3–4 Oct',
+                name: 'Langley Park Pavillion',
+                address: 'Langley Park, Perth WA',
+                times: '3 Oct: 6:30–9:00pm (Launch) · 4 Oct: 10:00am–5:00pm',
+                lat: -31.9612,
+                lng: 115.8653
+            },
+            {
+                label: '5–11 Oct',
+                name: 'Manning Primary School',
+                address: 'Manning WA',
+                times: '10:30am–4:30pm',
+                lat: -31.9905,
+                lng: 115.8867
+            },
+            {
+                label: '12–17 Oct',
+                name: 'Indian Society of WA',
+                address: 'Willeton WA',
+                times: '10:30am–4:30pm',
+                lat: -32.0504,
+                lng: 115.8826
+            },
+            {
+                label: '18 Oct',
+                name: 'Rod Evens Community Centre',
+                address: 'East Perth WA',
+                times: '4:00–8:00pm',
+                lat: -31.9558,
+                lng: 115.8714
+            }
+        ];
+
+        var map = L.map('map', { scrollWheelZoom: false }).setView([-31.99, 115.877], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(map);
+
+        // Custom marker icon
+        var icon = L.divIcon({
+            className: '',
+            html: '<div style="background:#c8a96e;border:2px solid #fff;border-radius:50%;width:18px;height:18px;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>',
+            iconSize: [18, 18],
+            iconAnchor: [9, 9],
+            popupAnchor: [0, -12]
+        });
+
+        venues.forEach(function(v) {
+            L.marker([v.lat, v.lng], { icon: icon })
+                .addTo(map)
+                .bindPopup(
+                    '<strong>' + v.label + ' — ' + v.name + '</strong><br>' +
+                    v.address + '<br>' +
+                    '<em>' + v.times + '</em>'
+                );
+        });
+    })();
+    </script>
 </body>
 </html>

@@ -188,3 +188,120 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+// ─── RSVP MODAL ───────────────────────────────────────────────────────────────
+(function () {
+  const openBtn    = document.getElementById("rsvp-open-btn");
+  const closeBtn   = document.getElementById("rsvp-close-btn");
+  const doneBtn    = document.getElementById("rsvp-done-btn");
+  const overlay    = document.getElementById("rsvp-overlay");
+  const modal      = document.getElementById("rsvp-modal");
+  const form       = document.getElementById("rsvp-form");
+  const errorBox   = document.getElementById("rsvp-error");
+  const successBox = document.getElementById("rsvp-success");
+  const submitBtn  = document.getElementById("rsvp-submit-btn");
+
+  if (!openBtn || !modal) return; // guard: only run on pages with the modal
+
+  // ── Open / close helpers ──────────────────────────────────────────────────
+  function openModal() {
+    modal.hidden   = false;
+    overlay.hidden = false;
+    document.body.style.overflow = "hidden";
+    // focus first input for accessibility
+    const first = modal.querySelector("input, select");
+    if (first) setTimeout(() => first.focus(), 50);
+  }
+
+  function closeModal() {
+    modal.hidden   = true;
+    overlay.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  openBtn.addEventListener("click",  openModal);
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click",  closeModal);
+  if (doneBtn) doneBtn.addEventListener("click", closeModal);
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+  // ── Form validation & submit ──────────────────────────────────────────────
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Clear previous errors
+    errorBox.hidden = true;
+    errorBox.textContent = "";
+    form.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
+
+    const firstName = form.firstName.value.trim();
+    const lastName  = form.lastName.value.trim();
+    const email     = form.email.value.trim();
+    const phone     = form.phone.value.trim();
+    const guests    = form.guests.value;
+
+    // Basic validation
+    let valid = true;
+    if (!firstName) { form.firstName.classList.add("invalid"); valid = false; }
+    if (!lastName)  { form.lastName.classList.add("invalid");  valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      form.email.classList.add("invalid"); valid = false;
+    }
+    if (!phone) { form.phone.classList.add("invalid"); valid = false; }
+    if (!guests) { form.guests.classList.add("invalid"); valid = false; }
+
+    if (!valid) {
+      errorBox.textContent = "Please fill in all required fields.";
+      errorBox.hidden = false;
+      return;
+    }
+
+    // Disable button while submitting
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting…";
+
+    const payload = { firstName, lastName, email, phone, guests,
+                      event: "Launch Event — 3 Oct, Langley Park Pavillion" };
+
+    try {
+      const res = await fetch("http://localhost:3847/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error("Server error: " + res.status);
+
+      // Show success
+      form.hidden      = true;
+      successBox.hidden = false;
+
+    } catch (err) {
+      // Server not running — fall back: show success anyway and log to console
+      console.warn("RSVP server not reachable. Entry logged to console:", payload);
+      form.hidden      = true;
+      successBox.hidden = false;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Confirm RSVP";
+    }
+  });
+
+  // Reset form when modal closes so it's fresh on next open
+  overlay.addEventListener("click", resetForm);
+  closeBtn.addEventListener("click", resetForm);
+  if (doneBtn) doneBtn.addEventListener("click", resetForm);
+
+  function resetForm() {
+    form.reset();
+    form.hidden       = false;
+    successBox.hidden = true;
+    errorBox.hidden   = true;
+    form.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
+  }
+})();

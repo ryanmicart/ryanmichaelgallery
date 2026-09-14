@@ -244,9 +244,51 @@ Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
 - Exhibition banner / front-page poster promotion (not yet implemented — in progress)
 - Merchandise tab content (images in C:\Users\rsm80\OneDrive\Documents\Art Website\Merchandise\: 79651.png, 79653.png, 79666.png, 79668.png)
 
+## Session Updates (August 28 2026)
+
+### DNS Issue — Root Cause Confirmed (Site inaccessible from all devices)
+- Users cannot access the site from mobile or desktop — confirmed DNS misconfiguration is the cause
+- The website code (HTML/CSS/JS) is correct and fully functional — not a code issue
+- Fix required in Crazy Domains DNS settings:
+  1. **Root A records** — remove `27.124.125.171` (Crazy Domains IP); keep ONLY:
+     - 185.199.108.153
+     - 185.199.109.153
+     - 185.199.110.153
+     - 185.199.111.153
+  2. **www CNAME** — change value from `27.124.125.171` to: `ryanmicart.github.io`
+  3. After propagation (up to 24hrs): confirm in GitHub repo Settings → Pages that custom domain = `ryanmichael.com.au` and "Enforce HTTPS" is ticked
+- GitHub Pages, all code, and deployment pipeline are working correctly
+
+### Current Site State (as of this session — code confirmed)
+- index.html: hero slideshow → about/bio → exhibition banner (posters) → reels (20 videos) → photography tabs (South Africa, Namibia, Mauritius, India, Australia-placeholder) → inequality exhibition tabs (Motivation, Inspiration, Message, Merchandise) → contact/FAQ/shipping
+- Nav: Reels · Photography · Inequality Exhibition · Contact
+- Exhibition banner live on homepage with poster-langley.png and poster-mps.png
+- Merchandise tab in Inequality Exhibition: 4 images (79651.png, 79653.png, 79666.png, 79668.png)
+- All photography images in website_project/photography/ subfolders (south-africa, namibia, mauritius, india)
+- Font: Ubuntu (Google Fonts)
+- No catalogue/gallery section (removed in June 2026 redesign)
+
 ## Notes
 - Instagram sharing not implemented (Instagram API doesn't support posting from static sites; discussed alternatives)
 - Screenshot prevention is best-effort (watermark is the real protection since OS-level screenshots can't be blocked)
 - faq.html and shipping.html can be deleted — content is now in the Contact section of index.html
 - Font: Ubuntu (Google Fonts) — applied to logo, headings, body. Earlier notes referencing Cormorant Garamond are outdated.
-- DNS issue (Crazy Domains misconfiguration) unresolved as of July 2 — see July 2 session notes for fix instructions
+- DNS issue (Crazy Domains misconfiguration) unresolved as of August 28 — see August 28 session notes for fix instructions
+
+## Session Updates (September 3 2026)
+
+### Old Exhibition Flyers Removed
+- Deleted `poster-mps.png` and `poster-langley.png` from `website_project/` (outdated venue-specific posters)
+- `poster-all-dates.png` (Sep 03, 3.7MB) retained as the current exhibition flyer
+- Neither deleted file was referenced in any HTML/CSS/JS (only mentioned in PROJECT_CONTEXT.md)
+
+### Hero Slideshow — Updated with Cover Images
+- Replaced old hero slides (Freedom.JPG, _MG_1545.JPG, _MG_1372.JPG) with 3 new cover images
+- New images copied from `C:\Users\rsm80\OneDrive\Documents\Art Website\Cover Images\` into `website_project/`:
+  - cover-1.JPG (4.1MB)
+  - cover-2.JPG (3.8MB)
+  - cover-3.JPG (8.8MB)
+- index.html hero-slide divs updated to reference cover-1.JPG, cover-2.JPG, cover-3.JPG
+- Old images (Freedom.JPG, _MG_1545.JPG, _MG_1372.JPG) still in website_project/ but no longer used
+- Commit: 766a5f1
+- Pushed to main → GitHub Pages
