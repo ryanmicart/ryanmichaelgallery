@@ -292,3 +292,57 @@ Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
 - Old images (Freedom.JPG, _MG_1545.JPG, _MG_1372.JPG) still in website_project/ but no longer used
 - Commit: 766a5f1
 - Pushed to main → GitHub Pages
+
+
+## Session Updates (September 14 2026)
+
+### Hero Slideshow — Expanded to 6 Cover Images
+- 3 additional cover images added from `C:\Users\rsm80\OneDrive\Documents\Art Website\Cover Images\`:
+  - cover-4.JPG (4.3MB)
+  - cover-5.JPG (4.1MB)
+  - cover-6.JPG (4.2MB)
+- index.html hero slideshow updated from 3 slides to 6 slides
+- Committed and pushed to main
+
+## Session Updates (September 18 2026)
+
+### Exhibition Poster Updated
+- New flyer copied from `C:\Users\rsm80\OneDrive\Documents\Art Website\Promotional Material\Art Exhibition Poster - Ryan Michael.png` (dated Sep 18)
+- Replaced `poster-all-dates.png` in `website_project/` (same filename, no HTML change needed)
+
+### Nav Tab Renamed
+- "Inequality Exhibition" → "Marginalised Exhibition" in both the nav link and section heading (index.html)
+
+### Exhibition Section — Clarified as Paintings Exhibition
+- Intro line updated to: "A collection of original paintings exploring themes of social and economic inequality."
+- Inspiration panel: added opening sentence — "The Marginalised is an exhibition of original paintings — each work hand-painted in oils on canvas or board. It is not a photographic exhibition."
+- Merchandise panel intro updated to reference "the Marginalised paintings series"
+
+### Hero Slideshow — Expanded to 11 Cover Images
+- 5 new cover images added today (Sep 18) from `C:\Users\rsm80\OneDrive\Documents\Art Website\Cover Images\`:
+  - cover-2.jpg (2.9MB) — replaced old cover-2.JPG
+  - cover-4.jpg (3.6MB) — replaced old cover-4.JPG
+  - cover-6.jpg (2.8MB) — replaced old cover-6.JPG
+  - cover-7.JPG (4.2MB) — new
+  - cover-8.jpg (1.8MB) — new
+  - cover-9.JPG (3.9MB) — new
+  - cover-10.jpg (1.4MB) — new
+  - cover-11.JPG (4.3MB) — new
+- index.html hero slideshow updated from 6 slides to 11 slides (cover-1 through cover-11)
+- Note: cover-2, cover-4, cover-6 file extensions changed from .JPG to .jpg (new files from source folder)
+
+### Profile Image — Real Photo Added
+- Source: `C:\Users\rsm80\OneDrive\Documents\Art Website\Profile\profile pic painting.png`
+- Copied to `website_project/profile.png`
+- index.html #about section: replaced placeholder `https://picsum.photos/seed/ryanm/400/500` with `profile.png`
+
+### SSL / HTTPS
+- Site shows "Not Secure" warning — discussed fix:
+  - Hosted on GitHub Pages with custom domain ryanmichael.com.au (registrar: Crazy Domains)
+  - Fix: in GitHub repo Settings → Pages, ensure custom domain is set and tick "Enforce HTTPS"
+  - DNS A records must point only to GitHub Pages IPs (see August 28 notes)
+  - No certificate purchase needed — GitHub Pages provisions free SSL via Let's Encrypt
+
+### Commits (Sep 18)
+- d8b9da5 — Update poster, cover images (1–11), and exhibition section text
+- 81bfff7 — Add real profile image to Ryan Michael bio section
