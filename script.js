@@ -1,5 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ─── PAGE SWITCHING ───────────────────────────────────────────────────────
+  function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    // Show target page
+    const target = document.getElementById("page-" + pageId);
+    if (target) target.classList.add("active");
+    // Update active nav link
+    document.querySelectorAll(".nav-link").forEach(a => {
+      a.classList.toggle("active", a.dataset.page === pageId);
+    });
+    // Scroll to top of page
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Wire up nav links
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      showPage(link.dataset.page);
+    });
+  });
+
+  // Expose showPage globally so inline links (CTAs etc.) can use it
+  window.showPage = showPage;
+
   // ─── HERO SLIDESHOW ───────────────────────────────────────────────────────
   const slides = document.querySelectorAll(".hero-slide");
   if (slides.length > 1) {
@@ -265,27 +291,33 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting…";
 
-    const payload = { firstName, lastName, email, phone, guests,
-                      event: "Launch Event — 3 Oct, Langley Park Pavillion" };
+    // Submit to Formspree — same service used by the contact/enquiry form
+    // RSVPs will be emailed to info@ryanmichael.com.au and visible at formspree.io/f/mkoegqqq
+    const formData = new FormData();
+    formData.append("_subject",   "RSVP — Launch Event 3 Oct");
+    formData.append("First Name", firstName);
+    formData.append("Last Name",  lastName);
+    formData.append("Email",      email);
+    formData.append("Phone",      phone);
+    formData.append("Guests",     guests);
+    formData.append("Event",      "Launch Event — 3 Oct, Langley Park Pavillion");
 
     try {
-      const res = await fetch("http://localhost:3847/rsvp", {
+      const res = await fetch("https://formspree.io/f/mkoegqqq", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        headers: { "Accept": "application/json" },
+        body: formData
       });
 
-      if (!res.ok) throw new Error("Server error: " + res.status);
+      if (!res.ok) throw new Error("Submission error: " + res.status);
 
       // Show success
-      form.hidden      = true;
+      form.hidden       = true;
       successBox.hidden = false;
 
     } catch (err) {
-      // Server not running — fall back: show success anyway and log to console
-      console.warn("RSVP server not reachable. Entry logged to console:", payload);
-      form.hidden      = true;
-      successBox.hidden = false;
+      errorBox.textContent = "Something went wrong. Please email info@ryanmichael.com.au to RSVP.";
+      errorBox.hidden = false;
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "Confirm RSVP";

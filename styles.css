@@ -1292,3 +1292,24 @@ body {
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
+
+/* ═══════════════════════════════════════════════════════
+   PAGE SWITCHING — tabbed layout
+   ═══════════════════════════════════════════════════════ */
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+
+/* Active nav link highlight */
+nav a.nav-link {
+    transition: color 0.15s;
+}
+nav a.nav-link.active {
+    color: #1a1a1a;
+    font-weight: 700;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 2px;
+}
