@@ -431,3 +431,17 @@ Inspired by bambaphotos.com (French-Senegalese photographer Bamba Sourang, Ryan'
 - Action required: Ryan to create Google Form at forms.google.com with fields: First Name, Last Name, Email, Phone, Number of Guests — then share the shortened link
 - Once link is provided: RSVP button will be updated to open the Google Form URL and pushed to GitHub
 - Contact form (Formspree mkoegqqq) to remain unchanged for now
+
+
+## Session Updates (September 21 2026 — Evening)
+
+### Titan Email — SPF Issue (Ongoing)
+- Problem: Titan showing "Action required — To send emails, you need to set your domain's SPF records correctly"
+- SPF record confirmed present via MXToolbox: `v=spf1 include:spf.titan.email ~all` (TXT, host: @)
+- MX records confirmed correct: mx1.titan.email (priority 10), mx2.titan.email (priority 20)
+- Domain info@ryanmichael.com.au shows as "verified" inside Titan settings
+- Root cause: Titan has cached the old "no SPF" state and hasn't re-checked since SPF was added
+- No "re-verify" button available inside Titan for already-verified accounts
+- Resolution: Wait 1–2 hours for Titan to re-check DNS on its own schedule
+- If still failing after 2 hours: contact Titan support directly with MXToolbox screenshot as evidence
+- DMARC record not yet added (not blocking email — lower priority)
