@@ -26,6 +26,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expose showPage globally so inline links (CTAs etc.) can use it
   window.showPage = showPage;
 
+  // ─── FEATURED CAROUSEL — drag to scroll ──────────────────────────────────
+  const carouselWrap = document.querySelector(".featured-carousel-wrap");
+  if (carouselWrap) {
+    let isDown = false, startX, scrollLeft;
+    carouselWrap.addEventListener("mousedown", (e) => {
+      isDown = true;
+      carouselWrap.classList.add("active");
+      startX = e.pageX - carouselWrap.offsetLeft;
+      scrollLeft = carouselWrap.scrollLeft;
+    });
+    carouselWrap.addEventListener("mouseleave", () => { isDown = false; });
+    carouselWrap.addEventListener("mouseup",    () => { isDown = false; });
+    carouselWrap.addEventListener("mousemove",  (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x    = e.pageX - carouselWrap.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carouselWrap.scrollLeft = scrollLeft - walk;
+    });
+  }
+
   // ─── HERO SLIDESHOW ───────────────────────────────────────────────────────
   const slides = document.querySelectorAll(".hero-slide");
   if (slides.length > 1) {

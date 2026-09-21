@@ -1313,3 +1313,233 @@ nav a.nav-link.active {
     border-bottom: 2px solid #1a1a1a;
     padding-bottom: 2px;
 }
+
+/* ═══════════════════════════════════════════════════════
+   EDITORIAL INTRO SECTION
+   ═══════════════════════════════════════════════════════ */
+#editorial-intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.editorial-preface {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #aaa;
+    margin-bottom: 0.8rem;
+}
+
+.editorial-preface em {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.editorial-heading {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+.editorial-heading em {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.editorial-body {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 520px;
+}
+
+.editorial-body em {
+    font-style: italic;
+    color: #333;
+}
+
+/* PULL QUOTE */
+.editorial-pull {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.pull-quote {
+    border-left: 3px solid #1a1a1a;
+    padding: 1.5rem 2rem;
+    background: #fafafa;
+    max-width: 420px;
+}
+
+.pull-quote p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-style: italic;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.pull-quote cite {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+    #editorial-intro {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 1.5rem 2rem;
+    }
+    .editorial-pull {
+        padding: 0;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════
+   FEATURED WORKS CAROUSEL
+   ═══════════════════════════════════════════════════════ */
+#featured-works {
+    padding: 3rem 0 4rem;
+    background: #f7f5f2;
+    overflow: hidden;
+}
+
+.featured-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.featured-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #aaa;
+}
+
+.featured-heading {
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.featured-heading em {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.featured-hint {
+    font-size: 0.78rem;
+    color: #bbb;
+    letter-spacing: 1px;
+    margin-left: auto;
+}
+
+.featured-carousel-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 2rem;
+    cursor: grab;
+}
+
+.featured-carousel-wrap:active {
+    cursor: grabbing;
+}
+
+.featured-carousel-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.featured-carousel {
+    display: flex;
+    gap: 1.2rem;
+    width: max-content;
+    padding-bottom: 0.5rem;
+}
+
+.featured-slide {
+    flex-shrink: 0;
+    width: 340px;
+    position: relative;
+}
+
+.featured-slide img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    display: block;
+}
+
+.featured-caption {
+    margin: 0;
+    padding: 0.6rem 0 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #888;
+}
+
+.featured-cta-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+    text-align: right;
+}
+
+.featured-cta {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+}
+
+.featured-cta:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+    .featured-slide {
+        width: 260px;
+    }
+    .featured-slide img {
+        height: 340px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════
+   PHOTOGRAPHY COUNTRY DESCRIPTIONS
+   ═══════════════════════════════════════════════════════ */
+.photo-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 2rem;
+    font-style: italic;
+    border-left: 3px solid #e0e0e0;
+    padding-left: 1.2rem;
+}

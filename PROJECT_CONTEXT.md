@@ -346,3 +346,67 @@ Inspired by saatchiart.com. Goal: cleaner, more gallery-like UX with fewer tabs.
 ### Commits (Sep 18)
 - d8b9da5 — Update poster, cover images (1–11), and exhibition section text
 - 81bfff7 — Add real profile image to Ryan Michael bio section
+
+
+## Session Updates (September 20–21 2026)
+
+### RSVP Modal — Launch Event
+- RSVP button added to exhibition banner in index.html
+- Modal dialog with form fields: First Name, Last Name, Email, Phone, Number of Guests
+- Submits to Formspree (same endpoint: mkoegqqq) with subject "RSVP — Launch Event 3 Oct"
+- Success state shown after submission; form resets on close
+- Keyboard accessible (Escape key closes modal)
+
+### Exhibition Banner — Layout & Venue Updates
+- All 5 exhibition venues listed in the banner (3 Oct Launch, 4 Oct Open Day, 5–11 Oct Manning Primary, 12–17 Oct Indian Society of WA, 18 Oct Rod Evens Community Centre)
+- Supported by: City of Perth & Indian Society of Western Australia
+
+### Exhibition Map — Added
+- Interactive Leaflet.js map showing all 4 venue pin locations on Perth metro area
+- Dark background section below the exhibition banner
+- Custom gold circular markers with popup showing venue name, dates, and times
+
+### Photography — Additional Cover Images
+- cover-9.JPG through cover-11.JPG and 8 additional cover images added to hero slideshow (now 11 total)
+
+### DNS / Email Fix (Sep 21 2026)
+- Titan email stopped working — error: "SPF records not set correctly"
+- Root cause: SPF TXT record was missing from Crazy Domains DNS
+- Fix applied: Added new TXT record `v=spf1 include:spf.titan.email ~all` in Crazy Domains
+- Existing DKIM TXT record (`v=DKIM1; k=rsa; p=...`) retained — DKIM and SPF are separate records
+- Both email and SSL certificate issues resolved after SPF record added
+
+### Bamba Photos Design Elements — Incorporated (Sep 21 2026)
+Inspired by bambaphotos.com (French-Senegalese photographer Bamba Sourang, Ryan's mentor)
+
+#### Editorial Intro Section (#editorial-intro)
+- New section added to index.html between the hero and the exhibition banner
+- Two-column layout (desktop): left column has preface label ("Art & Practice"), heading ("Portraiture as witness"), and 2-sentence editorial body copy
+- Right column: pull-quote blockquote attributed to Ryan Michael
+- Mobile: stacks to single column
+- CSS classes: `#editorial-intro`, `.editorial-preface`, `.editorial-heading`, `.editorial-body`, `.editorial-pull`, `.pull-quote`
+
+#### Featured Works Carousel (#featured-works)
+- Horizontal scroll carousel added below the editorial intro
+- 6 slides using cover-1, cover-3, cover-5, cover-7, cover-9, cover-11 images
+- Each slide has a caption label (e.g. "Portraiture & Identity", "Cultural Observation")
+- Background: off-white (#f7f5f2) — warm, editorial feel
+- Drag to scroll (mouse) + native touch scroll on mobile
+- "View All Works →" CTA links to Reels page
+- CSS classes: `#featured-works`, `.featured-carousel`, `.featured-slide`, `.featured-caption`
+- JS: drag-to-scroll on `.featured-carousel-wrap`
+
+#### Photography Country Descriptions (.photo-description)
+- Short evocative paragraph added above the photo grid for each country tab
+- South Africa: contradiction, resilience, end-of-day light
+- Namibia: silence, scale, the oldest desert
+- Mauritius: where photographic practice was shaped under Bamba Sourang's mentorship
+- India: heritage, insider/outsider tension, staggering contrast
+- Styled with left border line and italic text
+
+#### CSS Added (styles.css)
+- `#editorial-intro` — two-column grid, responsive
+- `.pull-quote` — left-bordered blockquote on off-white background
+- `#featured-works` — carousel section with off-white background
+- `.featured-carousel-wrap` — overflow-x scroll, drag cursor, no scrollbar
+- `.photo-description` — italic bordered description under each photo tab
