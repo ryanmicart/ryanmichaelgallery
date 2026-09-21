@@ -445,3 +445,11 @@ Inspired by bambaphotos.com (French-Senegalese photographer Bamba Sourang, Ryan'
 - Resolution: Wait 1–2 hours for Titan to re-check DNS on its own schedule
 - If still failing after 2 hours: contact Titan support directly with MXToolbox screenshot as evidence
 - DMARC record not yet added (not blocking email — lower priority)
+
+
+### Titan Email — DKIM Issue (Resolved)
+- After SPF was accepted, Titan then flagged incorrect DKIM records
+- Root cause: DKIM TXT record in Crazy Domains had incorrect host/name field (should be `titan._domainkey`)
+- Resolution: Crazy Domains support fixed the DKIM record configuration
+- All Titan email DNS records now correctly set: MX (mx1 + mx2), SPF, DKIM
+- Titan email fully operational as of September 21 evening
