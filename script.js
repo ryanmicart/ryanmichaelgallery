@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Scroll to top of page
     window.scrollTo({ top: 0, behavior: "smooth" });
+    // Fix Leaflet map blank render — invalidate size when home page is shown
+    if (pageId === "home" && window._leafletMap) {
+      setTimeout(() => window._leafletMap.invalidateSize(), 50);
+    }
   }
 
   // Wire up nav links
