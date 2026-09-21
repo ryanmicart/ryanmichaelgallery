@@ -410,3 +410,24 @@ Inspired by bambaphotos.com (French-Senegalese photographer Bamba Sourang, Ryan'
 - `#featured-works` — carousel section with off-white background
 - `.featured-carousel-wrap` — overflow-x scroll, drag cursor, no scrollbar
 - `.photo-description` — italic bordered description under each photo tab
+
+
+## Session Updates (September 21 2026 — Continued)
+
+### Map Fix — Blank Map Resolved
+- Root causes:
+  1. Leaflet CSS `<link>` was placed inside `<body>` after the hero section — moved to `<head>`
+  2. Leaflet renders into a zero-size container because the map div is inside `#page-home` which is hidden (`display:none`) on initial load when switching tabs
+- Fixes applied:
+  - Moved Leaflet CSS `<link>` to `<head>` in index.html
+  - Removed the inline Leaflet CSS link from inside `<body>`
+  - Stored Leaflet map instance as `window._leafletMap` in the inline map script
+  - In `showPage()` in script.js: added `window._leafletMap.invalidateSize()` call (with 50ms delay) whenever `pageId === "home"` — forces Leaflet to recalculate map dimensions after the container becomes visible
+- Commit: 4a6995a
+
+### RSVP — Google Forms Migration (Pending)
+- Formspree RSVP submissions not being received despite verified email
+- Decision: switch RSVP button to open a Google Form in a new tab
+- Action required: Ryan to create Google Form at forms.google.com with fields: First Name, Last Name, Email, Phone, Number of Guests — then share the shortened link
+- Once link is provided: RSVP button will be updated to open the Google Form URL and pushed to GitHub
+- Contact form (Formspree mkoegqqq) to remain unchanged for now
